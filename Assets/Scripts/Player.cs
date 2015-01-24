@@ -5,40 +5,41 @@ public class Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+	
 	}
 
-	public GameObject rope; 
-	public GameObject currentRope;
+	public GameObject rope;
 	public Player partner;
 	public float jumpSpeed = 5;
 	public float moveSpeed = 5;
+	public float maxSpeed = 10;
 
 	public KeyCode jump = KeyCode.UpArrow;
 	public KeyCode left = KeyCode.LeftArrow;
 	public KeyCode right = KeyCode.RightArrow;
 	public KeyCode grab = KeyCode.RightShift;
 
+	private bool isGrounded;
 
 	private float spawnPointTime;
 	private Vector3 spawnPoint;
 	// Update is called once per frame
-	void Update () {
-		if (Input.GetKeyDown (jump) && IsGrounded ()) {
-			rigidbody.
+	void FixedUpdate () {
+		if (Input.GetKeyDown (jump) && isGrounded ) {
 			rigidbody.AddForce(new Vector3(0,jumpSpeed,0));
 		}
-		if (Input.GetKeyDown (left)) {
+		if (Input.GetKey (left) && rigidbody.velocity.x > -maxSpeed) {
 			rigidbody.AddForce(new Vector3(-moveSpeed,0,0));
 		}
-		if (Input.GetKeyDown (right)) {
+		if (Input.GetKey (right) && rigidbody.velocity.x < maxSpeed) {
 			rigidbody.AddForce(new Vector3(moveSpeed,0,0));
 		}
-		if (Input.GetKeyDown (grab)) {
-			rigidbody.velocity.Set(0,0,0);
+		if (Input.GetKeyDown(grab)) {
+			rigidbody.isKinematic = true;
 		}
-
-		//rigidbody.AddForce (new Vector3 (Input.GetAxis("Horizontal")*10, 0));
+		if (Input.GetKeyUp (grab)) {
+			rigidbody.isKinematic = false;
+		}
 	}
 
 	void OnTriggerEnter(Collider other) {
@@ -57,9 +58,6 @@ public class Player : MonoBehaviour {
 		} else {
 			currentSpawnPoint = partner.spawnPoint;
 		}
-
-		Destroy (currentRope);
-
 		//move player to last checkpoint
 		transform.position = currentSpawnPoint + 2*Vector3.right;
 		rigidbody.velocity = Vector3.zero;
@@ -67,14 +65,27 @@ public class Player : MonoBehaviour {
 		partner.transform.position = currentSpawnPoint + 2*Vector3.left;
 		partner.rigidbody.velocity = Vector3.zero;
 		//move rope
-		currentRope = Instantiate (rope, currentSpawnPoint, Quaternion.identity) as GameObject;
-		partner.currentRope = currentRope;
+		rope.transform.position = currentSpawnPoint + Vector3.down;
 
-		currentRope.
 	}
 
 	bool IsGrounded() {
 		return Physics.CheckCapsule(collider.bounds.center,new Vector3(collider.bounds.center.x,collider.bounds.min.y-0.1f,collider.bounds.center.z),0.18f);
+	}
+
+	//make sure u replace "floor" with your gameobject name.on which player is standing
+	void OnCollisionEnter(Collision theCollision){
+		if(theCollision.gameObject.tag == "Ground")
+		{
+			isGrounded = true;
+		}
+	}
+
+	void OnCollisionExit(Collision theCollision){
+		if(theCollision.gameObject.tag == "Ground")
+		{
+			isGrounded = false;
+		}
 	}
 
 }
