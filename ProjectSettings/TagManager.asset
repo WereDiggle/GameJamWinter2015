@@ -3,8 +3,6 @@
 --- !u!78 &1
 TagManager:
   tags:
-  - Death
-  - CheckPoint
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
@@ -15,13 +13,8 @@ TagManager:
   Builtin Layer 6: 
   Builtin Layer 7: 
   User Layer 8: Players
-<<<<<<< HEAD
   User Layer 9: 
   User Layer 10: 
-=======
-  User Layer 9: Rope
-  User Layer 10: Environment
->>>>>>> bdb65102198a79a4e9fcf94b6da2117cfe6d8ec3
   User Layer 11: 
   User Layer 12: 
   User Layer 13: 
@@ -43,8 +36,4 @@ TagManager:
   User Layer 29: 
   User Layer 30: 
   User Layer 31: 
-  m_SortingLayers:
-  - name: Default
-    userID: 0
-    uniqueID: 0
-    locked: 0
+  m_SortingLayers: []

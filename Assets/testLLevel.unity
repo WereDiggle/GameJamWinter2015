@@ -617,11 +617,7 @@ InteractiveCloth:
   m_BendingStiffness: 0
   m_StretchingStiffness: .519999981
   m_Damping: 1
-<<<<<<< HEAD
   m_Thickness: 1
-=======
-  m_Thickness: .100000001
->>>>>>> bdb65102198a79a4e9fcf94b6da2117cfe6d8ec3
   m_UseGravity: 1
   m_SelfCollision: 1
   m_ExternalAcceleration: {x: 0, y: 0, z: 0}

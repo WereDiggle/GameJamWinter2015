@@ -16,15 +16,10 @@ public class Player : MonoBehaviour {
 	public KeyCode jump = KeyCode.UpArrow;
 	public KeyCode left = KeyCode.LeftArrow;
 	public KeyCode right = KeyCode.RightArrow;
-<<<<<<< HEAD
 	public KeyCode grab = KeyCode.RightShift;
-	
-=======
 
 	private float spawnPointTime;
 	private Vector3 spawnPoint;
-
->>>>>>> bdb65102198a79a4e9fcf94b6da2117cfe6d8ec3
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown (jump) && IsGrounded ()) {
