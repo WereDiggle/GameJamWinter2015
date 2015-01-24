@@ -3,9 +3,14 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
+	
+	
+	public double distToGround = 0.1;
+
 	// Use this for initialization
 	void Start () {
-	
+		
+		distToGround = collider.bounds.extents.y;
 	}
 
 	public GameObject rope;
@@ -19,13 +24,12 @@ public class Player : MonoBehaviour {
 	public KeyCode right = KeyCode.RightArrow;
 	public KeyCode grab = KeyCode.RightShift;
 
-	private bool isGrounded;
 
 	private float spawnPointTime;
 	private Vector3 spawnPoint;
 	// Update is called once per frame
 	void FixedUpdate () {
-		if (Input.GetKeyDown (jump) && isGrounded ) {
+		if (Input.GetKey (jump) && IsGrounded() ) {
 			rigidbody.AddForce(new Vector3(0,jumpSpeed,0));
 		}
 		if (Input.GetKey (left) && rigidbody.velocity.x > -maxSpeed) {
@@ -70,22 +74,15 @@ public class Player : MonoBehaviour {
 	}
 
 	bool IsGrounded() {
-		return Physics.CheckCapsule(collider.bounds.center,new Vector3(collider.bounds.center.x,collider.bounds.min.y-0.1f,collider.bounds.center.z),0.18f);
+		RaycastHit hit;
+		if (Physics.Raycast (transform.position, -Vector3.up, out hit)) {
+			var distanceToGround = hit.distance;
+			if (distanceToGround < 1 && hit.transform.gameObject != partner.gameObject) {
+				return true;
+			}
+		}
+		return false;
 	}
 
-	//make sure u replace "floor" with your gameobject name.on which player is standing
-	void OnCollisionEnter(Collision theCollision){
-		if(theCollision.gameObject.tag == "Ground")
-		{
-			isGrounded = true;
-		}
-	}
-
-	void OnCollisionExit(Collision theCollision){
-		if(theCollision.gameObject.tag == "Ground")
-		{
-			isGrounded = false;
-		}
-	}
 
 }
