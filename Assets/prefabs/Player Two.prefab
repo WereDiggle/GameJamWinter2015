@@ -12,11 +12,12 @@ GameObject:
   - 23: {fileID: 2333658}
   - 54: {fileID: 5433658}
   - 114: {fileID: 11433658}
-  - 135: {fileID: 13533658}
   - 114: {fileID: 11433660}
+  - 143: {fileID: 14385650}
+  - 136: {fileID: 13685650}
   m_Layer: 8
   m_Name: Player Two
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -146,8 +147,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rope: {fileID: 151588, guid: 1e4b4fe4c81593a4bb3d33dd1a6159e6, type: 2}
   partner: {fileID: 0}
-  jumpSpeed: 5
-  moveSpeed: 100
+  jumpSpeed: 50
+  moveSpeed: 5
+  maxSpeed: 10
   jump: 273
   left: 276
   right: 275
@@ -163,18 +165,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ec6e269761844eb5ba438378cb0ccd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &13533658
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 133658}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: .500000119
-  m_Center: {x: 5.96046448e-08, y: 0, z: -8.94069672e-08}
 --- !u!135 &13533660
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -186,6 +176,33 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: .5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &13685650
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 133658}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: .500000119
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 5.96046448e-08, y: 0, z: -8.94069672e-08}
+--- !u!143 &14385650
+CharacterController:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 133658}
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: .500000119
+  m_SlopeLimit: 45
+  m_StepOffset: .300000012
+  m_SkinWidth: .0799999982
+  m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &100100000
 Prefab:
