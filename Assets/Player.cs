@@ -14,6 +14,7 @@ public class Player : MonoBehaviour {
 	public KeyCode jump = KeyCode.UpArrow;
 	public KeyCode left = KeyCode.LeftArrow;
 	public KeyCode right = KeyCode.RightArrow;
+	public KeyCode grab = KeyCode.RightShift;
 	
 	// Update is called once per frame
 	void Update () {
@@ -25,6 +26,9 @@ public class Player : MonoBehaviour {
 		}
 		if (Input.GetKeyDown (right)) {
 			rigidbody.AddForce(new Vector3(moveSpeed,0,0));
+		}
+		if (Input.GetKeyDown (grab)) {
+			rigidbody.velocity.Set(0,0,0);
 		}
 
 		rigidbody.AddForce (new Vector3 (Input.GetAxis("Horizontal")*10, 0));
