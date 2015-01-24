@@ -31,20 +31,22 @@ public class Player : MonoBehaviour {
 	private Vector3 spawnPoint;
 	// Update is called once per frame
 	void FixedUpdate () {
-		if (Input.GetKey (jump) && IsGrounded() ) {
-			rigidbody.AddForce(new Vector3(0,jumpSpeed,0));
-		}
-		if (Input.GetKey (left) && rigidbody.velocity.x > -maxSpeed) {
-			rigidbody.AddForce(new Vector3(-moveSpeed,0,0));
-		}
-		if (Input.GetKey (right) && rigidbody.velocity.x < maxSpeed) {
-			rigidbody.AddForce(new Vector3(moveSpeed,0,0));
-		}
-		if (Input.GetKeyDown(grab)) {
-			rigidbody.isKinematic = true;
-		}
-		if (Input.GetKeyUp (grab)) {
-			rigidbody.isKinematic = false;
+		if (Time.timeScale > 0) {
+			if (Input.GetKey (jump) && IsGrounded() ) {
+				rigidbody.AddForce(new Vector3(0,jumpSpeed,0));
+			}
+			if (Input.GetKey (left) && rigidbody.velocity.x > -maxSpeed) {
+				rigidbody.AddForce(new Vector3(-moveSpeed,0,0));
+			}
+			if (Input.GetKey (right) && rigidbody.velocity.x < maxSpeed) {
+				rigidbody.AddForce(new Vector3(moveSpeed,0,0));
+			}
+			if (Input.GetKeyDown(grab)) {
+				rigidbody.isKinematic = true;
+			}
+			if (Input.GetKeyUp (grab)) {
+				rigidbody.isKinematic = false;
+			}
 		}
 	}
 
