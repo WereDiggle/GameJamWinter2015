@@ -90,7 +90,7 @@ GameObject:
   - 114: {fileID: 52292070}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -606,7 +606,7 @@ ClothRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_PauseWhenNotVisible: 1
+  m_PauseWhenNotVisible: 0
 --- !u!160 &552140600
 InteractiveCloth:
   m_ObjectHideFlags: 0
@@ -617,7 +617,11 @@ InteractiveCloth:
   m_BendingStiffness: 0
   m_StretchingStiffness: .519999981
   m_Damping: 1
+<<<<<<< HEAD
   m_Thickness: 1
+=======
+  m_Thickness: .100000001
+>>>>>>> bdb65102198a79a4e9fcf94b6da2117cfe6d8ec3
   m_UseGravity: 1
   m_SelfCollision: 1
   m_ExternalAcceleration: {x: 0, y: 0, z: 0}
