@@ -150,7 +150,7 @@ MonoBehaviour:
   rope: {fileID: 151588, guid: 1e4b4fe4c81593a4bb3d33dd1a6159e6, type: 2}
   currentRope: {fileID: 0}
   partner: {fileID: 0}
-  jumpSpeed: 50
+  jumpSpeed: 75
   moveSpeed: 5
   maxSpeed: 10
   jump: 273
