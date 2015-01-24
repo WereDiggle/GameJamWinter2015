@@ -5,10 +5,11 @@ public class Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		
 	}
 
-	public GameObject rope;
+	public GameObject rope; 
+	public GameObject currentRope;
 	public Player partner;
 	public float jumpSpeed = 5;
 	public float moveSpeed = 5;
@@ -18,11 +19,13 @@ public class Player : MonoBehaviour {
 	public KeyCode right = KeyCode.RightArrow;
 	public KeyCode grab = KeyCode.RightShift;
 
+
 	private float spawnPointTime;
 	private Vector3 spawnPoint;
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown (jump) && IsGrounded ()) {
+			rigidbody.
 			rigidbody.AddForce(new Vector3(0,jumpSpeed,0));
 		}
 		if (Input.GetKeyDown (left)) {
@@ -35,7 +38,7 @@ public class Player : MonoBehaviour {
 			rigidbody.velocity.Set(0,0,0);
 		}
 
-		rigidbody.AddForce (new Vector3 (Input.GetAxis("Horizontal")*10, 0));
+		//rigidbody.AddForce (new Vector3 (Input.GetAxis("Horizontal")*10, 0));
 	}
 
 	void OnTriggerEnter(Collider other) {
@@ -54,6 +57,9 @@ public class Player : MonoBehaviour {
 		} else {
 			currentSpawnPoint = partner.spawnPoint;
 		}
+
+		Destroy (currentRope);
+
 		//move player to last checkpoint
 		transform.position = currentSpawnPoint + 2*Vector3.right;
 		rigidbody.velocity = Vector3.zero;
@@ -61,8 +67,10 @@ public class Player : MonoBehaviour {
 		partner.transform.position = currentSpawnPoint + 2*Vector3.left;
 		partner.rigidbody.velocity = Vector3.zero;
 		//move rope
-		rope.transform.position = currentSpawnPoint + Vector3.down;
+		currentRope = Instantiate (rope, currentSpawnPoint, Quaternion.identity) as GameObject;
+		partner.currentRope = currentRope;
 
+		currentRope.
 	}
 
 	bool IsGrounded() {
