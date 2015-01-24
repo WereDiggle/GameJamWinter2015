@@ -145,7 +145,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1bf9575136944d90bdcbb641e45bba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distToGround: .10000000000000001
+  ropeAttach: {fileID: 0}
   rope: {fileID: 151588, guid: 1e4b4fe4c81593a4bb3d33dd1a6159e6, type: 2}
+  currentRope: {fileID: 0}
   partner: {fileID: 0}
   jumpSpeed: 50
   moveSpeed: 5
@@ -172,7 +175,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 148716}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: .5
