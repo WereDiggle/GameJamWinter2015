@@ -13,7 +13,9 @@ public class Player : MonoBehaviour {
 		distToGround = collider.bounds.extents.y;
 	}
 
-	public GameObject rope;
+	public Collider ropeAttach;
+	public InteractiveCloth rope;
+	public InteractiveCloth currentRope;
 	public Player partner;
 	public float jumpSpeed = 5;
 	public float moveSpeed = 5;
@@ -62,15 +64,23 @@ public class Player : MonoBehaviour {
 		} else {
 			currentSpawnPoint = partner.spawnPoint;
 		}
+
+		Destroy (currentRope.gameObject);
+
 		//move player to last checkpoint
-		transform.position = currentSpawnPoint + 2*Vector3.right;
+		transform.position = currentSpawnPoint + Vector3.right;
 		rigidbody.velocity = Vector3.zero;
 		//move partner to last checkpoint
-		partner.transform.position = currentSpawnPoint + 2*Vector3.left;
+		partner.transform.position = currentSpawnPoint + Vector3.left;
 		partner.rigidbody.velocity = Vector3.zero;
-		//move rope
-		rope.transform.position = currentSpawnPoint + Vector3.down;
 
+
+		//make and attach new rope
+		currentRope = Instantiate (rope, currentSpawnPoint, Quaternion.identity) as InteractiveCloth;
+		partner.currentRope = currentRope;
+
+		currentRope.AttachToCollider (ropeAttach, false, true);
+		currentRope.AttachToCollider (partner.ropeAttach, false, true);
 	}
 
 	bool IsGrounded() {
