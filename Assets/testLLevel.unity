@@ -106,6 +106,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1bf9575136944d90bdcbb641e45bba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rope: {fileID: 0}
+  partner: {fileID: 0}
   jumpSpeed: 500
   moveSpeed: 5
   jump: 273
@@ -299,6 +301,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1bf9575136944d90bdcbb641e45bba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rope: {fileID: 0}
+  partner: {fileID: 0}
   jumpSpeed: 5
   moveSpeed: 50
   jump: 119
@@ -567,7 +571,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 6
 --- !u!1 &552140598
 GameObject:
   m_ObjectHideFlags: 0
@@ -983,6 +987,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1bf9575136944d90bdcbb641e45bba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rope: {fileID: 0}
+  partner: {fileID: 0}
   jumpSpeed: 5
   moveSpeed: 5
   jump: 273
