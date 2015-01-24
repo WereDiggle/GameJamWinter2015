@@ -4,7 +4,9 @@ using System.Collections;
 public class DestroyerTrigger : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
-		Destroy (other.gameObject);
+		if (!other.CompareTag ("Player")) {
+			Destroy (other.gameObject);
+		}
 	}
 
 	// Use this for initialization

@@ -8,13 +8,18 @@ public class Player : MonoBehaviour {
 	
 	}
 
+	public GameObject rope;
+	public Player partner;
 	public float jumpSpeed = 5;
 	public float moveSpeed = 5;
 
 	public KeyCode jump = KeyCode.UpArrow;
 	public KeyCode left = KeyCode.LeftArrow;
 	public KeyCode right = KeyCode.RightArrow;
-	
+
+	private float spawnPointTime;
+	private Vector3 spawnPoint;
+
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown (jump) && IsGrounded ()) {
@@ -30,7 +35,35 @@ public class Player : MonoBehaviour {
 		rigidbody.AddForce (new Vector3 (Input.GetAxis("Horizontal")*10, 0));
 	}
 
+	void OnTriggerEnter(Collider other) {
+		if (other.CompareTag ("Death")) {
+			Respawn();		
+		} else if (other.CompareTag ("CheckPoint")) {
+			spawnPoint = other.transform.position;
+			spawnPointTime = Time.time;
+		}
+	}
+
+	void Respawn() {
+		Vector3 currentSpawnPoint;
+		if (partner.spawnPointTime > spawnPointTime) {
+			currentSpawnPoint = spawnPoint;
+		} else {
+			currentSpawnPoint = partner.spawnPoint;
+		}
+		//move player to last checkpoint
+		transform.position = currentSpawnPoint + 2*Vector3.right;
+		rigidbody.velocity = Vector3.zero;
+		//move partner to last checkpoint
+		partner.transform.position = currentSpawnPoint + 2*Vector3.left;
+		partner.rigidbody.velocity = Vector3.zero;
+		//move rope
+		rope.transform.position = currentSpawnPoint;
+
+	}
+
 	bool IsGrounded() {
 		return Physics.CheckCapsule(collider.bounds.center,new Vector3(collider.bounds.center.x,collider.bounds.min.y-0.1f,collider.bounds.center.z),0.18f);
 	}
+
 }
