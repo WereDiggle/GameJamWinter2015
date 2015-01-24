@@ -58,7 +58,7 @@ public class Player : MonoBehaviour {
 		partner.transform.position = currentSpawnPoint + 2*Vector3.left;
 		partner.rigidbody.velocity = Vector3.zero;
 		//move rope
-		rope.transform.position = currentSpawnPoint;
+		rope.transform.position = currentSpawnPoint + Vector3.down;
 
 	}
 
