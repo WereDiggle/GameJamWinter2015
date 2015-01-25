@@ -42,11 +42,19 @@ public class CheckPoint : MonoBehaviour {
 			int i=0;
 			foreach (GameObject resetObject in objectsToReset) {
 
-
 				resetObject.transform.position = locations[i];
 				resetObject.transform.rotation = rotations[i];
 				resetObject.rigidbody.velocity = Vector3.zero;
 				resetObject.rigidbody.angularVelocity = Vector3.zero;
+
+				FixedJoint j = resetObject.GetComponent<FixedJoint>();
+				if (j==null && connections[i] != null) {
+					j = resetObject.AddComponent("FixedJoint") as FixedJoint;
+					j.connectedBody = connections[i];
+					j.breakForce = 10f;
+					j.breakTorque = 2f;
+				}
+
 				i++;
 			}
 
