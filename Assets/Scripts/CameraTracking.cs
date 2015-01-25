@@ -53,7 +53,7 @@ public class CameraTracking : MonoBehaviour {
 		// new target camera distance
               		// geometry!
 
-		float newZ = 1f * Mathf.Tan(Mathf.Deg2Rad*fov) * opp; 
+		float newZ = 1f * Mathf.Tan(Mathf.Deg2Rad*fov) * opp * 2; 
 		//print ("newZ = " + newZ);
 		if(newZ > maxdist) {
 			newZ = maxdist;
