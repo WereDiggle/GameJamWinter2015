@@ -37,14 +37,16 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		if (Time.timeScale > 0) {
-			if (Input.GetKey(grab) && onHandle) {
+			if (Input.GetKey(grab) && onHandle && gameObject.GetComponent("HingeJoint") == null) {
 				GrabHandle();
+			}
+			if (Input.GetKey(grab) && onHandle) {
 				isGrabbing = true;
 			}
 			else {
 				isGrabbing = false;
 			}
-			if (!isGrabbing && gameObject.GetComponent("FixedJoint") != null) {
+			if (!isGrabbing && gameObject.GetComponent("HingeJoint") != null) {
 				ReleaseHandle ();
 			}
 			if (Input.GetKey (jump) && IsGrounded() ) {
@@ -60,15 +62,14 @@ public class Player : MonoBehaviour {
 	}
 
 	void GrabHandle() {
-		if (onHandle && collidedHandle != null) {
-			gameObject.AddComponent("FixedJoint");
-
-			FixedJoint fixedJoint = (FixedJoint)gameObject.GetComponent("FixedJoint");
-			fixedJoint.connectedBody = collidedHandle.attachedRigidbody;
-		}
+		HingeJoint tempHinge = gameObject.AddComponent<HingeJoint>();
+		tempHinge.connectedBody = collidedHandle.transform.parent.rigidbody;
+		tempHinge.anchor = new Vector3(0,0,0);
+		tempHinge.connectedAnchor = new Vector3(0,0,0);
+		tempHinge.axis = new Vector3(0,0,0);
 	}
 	void ReleaseHandle() {
-		Destroy(gameObject.GetComponent("FixedJoint"));
+		Destroy (hingeJoint);
 	}
 
 	void OnTriggerEnter(Collider other) {
