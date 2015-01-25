@@ -6,12 +6,14 @@ public class CheckPoint : MonoBehaviour {
 
 	public List<GameObject> objectsToReset;
 
-	private List<Vector3> locations;
+	private List<Vector3> locations = new List<Vector3>();
+	private List<Quaternion> rotations = new List<Quaternion>();
 
 	// Use this for initialization
 	void Start () {
 		foreach (GameObject resetObject in objectsToReset) {
 			locations.Add(resetObject.transform.position);
+			rotations.Add(resetObject.transform.rotation);
 		}
 	}
 	
@@ -31,6 +33,9 @@ public class CheckPoint : MonoBehaviour {
 			int i=0;
 			foreach (GameObject resetObject in objectsToReset) {
 				resetObject.transform.position = locations[i];
+				resetObject.transform.rotation = rotations[i];
+				resetObject.rigidbody.velocity = Vector3.zero;
+				resetObject.rigidbody.angularVelocity = Vector3.zero;
 				i++;
 			}
 
