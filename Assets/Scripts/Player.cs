@@ -56,18 +56,13 @@ public class Player : MonoBehaviour {
 
 	void GrabHandle() {
 		if (onHandle && collidedHandle != null) {
-			collidedHandle.material.dynamicFriction = 1;
-			collidedHandle.material.dynamicFriction2 = 1;
-			collidedHandle.material.staticFriction = 1;
-			collidedHandle.material.staticFriction2 = 1;
+			gameObject.AddComponent("HingeJoint");
+			hingeJoint.connectedBody = collidedHandle.attachedRigidbody;
 		}
 	}
 	void ReleaseHandle() {
 		if (onHandle && collidedHandle != null) {
-			collidedHandle.material.dynamicFriction = 0;
-			collidedHandle.material.dynamicFriction2 = 0;
-			collidedHandle.material.staticFriction = 0;
-			collidedHandle.material.staticFriction2 = 0;
+			Object.Destroy(hingeJoint);
 		}
 	}
 
@@ -84,25 +79,19 @@ public class Player : MonoBehaviour {
 					Application.LoadLevel (i + 1);
 			}
 		}
-	}
-
-	void OnCollisionEnter(Collision other) {	
-		if (other.collider.CompareTag ("Handle")) {
+		else if (other.CompareTag ("Handle")) {
 			onHandle = true;
 			collidedHandle = other.collider;
-		}
-	}
-
-	void OnCollisionExit(Collision other) {	
-		if (other.collider.CompareTag ("Handle")) {
-			onHandle = false;
-			collidedHandle = null;
 		}
 	}
 
 	void OnTriggerExit(Collider other) {
 		if (other.CompareTag ("Goal")) {
 			isAtGoal = false;
+		}
+		else if (other.CompareTag ("Handle")) {
+			onHandle = false;
+			collidedHandle = null;
 		}
 	}
 
@@ -136,7 +125,7 @@ public class Player : MonoBehaviour {
 		RaycastHit hit;
 		if (Physics.Raycast (transform.position, -Vector3.up, out hit)) {
 			var distanceToGround = hit.distance;
-			if (distanceToGround < 1 && hit.transform.gameObject != partner.gameObject) {
+			if (distanceToGround < distToGround && hit.transform.gameObject.tag == "Ground") {
 				return true;
 			}
 		}
