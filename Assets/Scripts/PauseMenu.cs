@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PauseMenu : MonoBehaviour {
 
-	//public float fov;
+	public float fov = 90.0f;
 	public Player playerOne;
 	public GUISkin myskin;
 	public KeyCode pauseButton = KeyCode.Escape;
@@ -82,7 +82,6 @@ public class PauseMenu : MonoBehaviour {
 	}
 
 	private void optionWindow(int id) {
-		float fov = 90.0f;
 		GUILayout.Label ("FOV Slider");
 		fov = GUILayout.HorizontalSlider (fov, 30.0f, 160.0f);
 		if (GUILayout.Button("Back") || Input.GetKeyDown(pauseButton))
