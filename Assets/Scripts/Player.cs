@@ -78,7 +78,7 @@ public class Player : MonoBehaviour {
 		}
 	}
 
-	void Respawn() {
+	public void Respawn() {
 		Vector3 currentSpawnPoint;
 		if (partner.spawnPointTime > spawnPointTime) {
 			currentSpawnPoint = spawnPoint;
