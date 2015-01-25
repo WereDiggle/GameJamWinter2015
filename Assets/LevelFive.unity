@@ -728,7 +728,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 265004180}
   - 212: {fileID: 265004179}
-  - 61: {fileID: 265004178}
+  - 65: {fileID: 265004178}
   m_Layer: 0
   m_Name: GoalPost
   m_TagString: Goal
@@ -736,17 +736,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!61 &265004178
-BoxCollider2D:
+--- !u!65 &265004178
+BoxCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 265004177}
-  m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Size: {x: 51.0000038, y: 33}
-  m_Center: {x: 0, y: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 51.0000038, y: 33, z: .200000003}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &265004179
 SpriteRenderer:
   m_ObjectHideFlags: 0
