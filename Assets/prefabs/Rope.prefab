@@ -10,7 +10,6 @@ GameObject:
   - 4: {fileID: 422990}
   - 160: {fileID: 16022990}
   - 161: {fileID: 16122990}
-  - 114: {fileID: 11422990}
   m_Layer: 10
   m_Name: Rope
   m_TagString: Untagged
@@ -24,23 +23,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 122990}
-  m_LocalRotation: {x: .42261833, y: 0, z: 0, w: .906307817}
+  m_LocalRotation: {x: -1.15202326e-07, y: .707106709, z: -.707106829, w: -1.15202312e-07}
   m_LocalPosition: {x: 59.3400002, y: 32.0999985, z: 0}
-  m_LocalScale: {x: .129999995, y: 1, z: .00999999978}
+  m_LocalScale: {x: .200000003, y: 1, z: .00999999978}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11422990
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 122990}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ec6e269761844eb5ba438378cb0ccd4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!160 &16022990
 InteractiveCloth:
   m_ObjectHideFlags: 1
@@ -51,14 +39,14 @@ InteractiveCloth:
   m_BendingStiffness: 0
   m_StretchingStiffness: .25
   m_Damping: 1
-  m_Thickness: 1
+  m_Thickness: .100000001
   m_UseGravity: 1
-  m_SelfCollision: 1
+  m_SelfCollision: 0
   m_ExternalAcceleration: {x: 0, y: 0, z: 0}
   m_RandomAcceleration: {x: 0, y: 0, z: 0}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
   m_Friction: 0
-  m_Density: 1
+  m_Density: 4
   m_Pressure: 0
   m_CollisionResponse: .99000001
   m_AttachmentTearFactor: .00100000005

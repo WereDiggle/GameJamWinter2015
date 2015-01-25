@@ -77,7 +77,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6a206b881256d4c36b3b3c0a369c5f7e, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -146,8 +146,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distToGround: .10000000000000001
-  ropeAttach: {fileID: 0}
-  rope: {fileID: 151588, guid: 1e4b4fe4c81593a4bb3d33dd1a6159e6, type: 2}
+  ropeAttach: {fileID: 13533660}
+  rope: {fileID: 16022990, guid: fea6379e1196b4914815d20dd13daf02, type: 2}
   currentRope: {fileID: 0}
   partner: {fileID: 0}
   jumpSpeed: 75
@@ -157,6 +157,7 @@ MonoBehaviour:
   left: 276
   right: 275
   grab: 274
+  isAtGoal: 0
 --- !u!114 &11433660
 MonoBehaviour:
   m_ObjectHideFlags: 1

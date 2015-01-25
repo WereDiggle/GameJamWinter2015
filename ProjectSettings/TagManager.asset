@@ -6,6 +6,8 @@ TagManager:
   - Goal
   - Death
   - CheckPoint
+  - Handle
+  - Ground
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

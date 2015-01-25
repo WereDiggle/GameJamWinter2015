@@ -59,7 +59,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 148718}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.10999966, y: 6.30000019, z: 30}
+  m_LocalPosition: {x: -8.06000042, y: 6.30000019, z: 30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 448716}
@@ -97,7 +97,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 4761c2a9b9d354d3c92578019d375bcb, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -146,17 +146,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distToGround: .10000000000000001
-  ropeAttach: {fileID: 0}
-  rope: {fileID: 151588, guid: 1e4b4fe4c81593a4bb3d33dd1a6159e6, type: 2}
+  ropeAttach: {fileID: 13548716}
+  rope: {fileID: 16022990, guid: fea6379e1196b4914815d20dd13daf02, type: 2}
   currentRope: {fileID: 0}
   partner: {fileID: 0}
-  jumpSpeed: 50
+  jumpSpeed: 75
   moveSpeed: 5
   maxSpeed: 10
   jump: 119
   left: 97
   right: 100
   grab: 115
+  isAtGoal: 0
 --- !u!114 &11448718
 MonoBehaviour:
   m_ObjectHideFlags: 1

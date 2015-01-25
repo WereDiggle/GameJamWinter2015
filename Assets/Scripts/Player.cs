@@ -27,6 +27,7 @@ public class Player : MonoBehaviour {
 	public KeyCode grab = KeyCode.RightShift;
 
 	private bool onHandle = false;
+	private Collider collidedHandle = null;
 
 	public bool isAtGoal = false;
 
@@ -35,11 +36,11 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		if (Time.timeScale > 0) {
-			if (Input.GetKeyDown(grab)) {
-				rigidbody.isKinematic = true;
+			if (Input.GetKeyDown(grab) && onHandle) {
+				GrabHandle();
 			}
 			if (Input.GetKeyUp (grab)) {
-				rigidbody.isKinematic = false;
+				ReleaseHandle ();
 			}
 			if (Input.GetKey (jump) && IsGrounded() ) {
 				rigidbody.AddForce(new Vector3(0,jumpSpeed,0));
@@ -50,6 +51,23 @@ public class Player : MonoBehaviour {
 			if (Input.GetKey (right) && rigidbody.velocity.x < maxSpeed) {
 				rigidbody.AddForce(new Vector3(moveSpeed,0,0));
 			}
+		}
+	}
+
+	void GrabHandle() {
+		if (onHandle && collidedHandle != null) {
+			collidedHandle.material.dynamicFriction = 1;
+			collidedHandle.material.dynamicFriction2 = 1;
+			collidedHandle.material.staticFriction = 1;
+			collidedHandle.material.staticFriction2 = 1;
+		}
+	}
+	void ReleaseHandle() {
+		if (onHandle && collidedHandle != null) {
+			collidedHandle.material.dynamicFriction = 0;
+			collidedHandle.material.dynamicFriction2 = 0;
+			collidedHandle.material.staticFriction = 0;
+			collidedHandle.material.staticFriction2 = 0;
 		}
 	}
 
@@ -65,16 +83,26 @@ public class Player : MonoBehaviour {
 					int i = Application.loadedLevel;
 					Application.LoadLevel (i + 1);
 			}
-		} else if (other.CompareTag ("Handle")) {
-			onHandle = true;		
+		}
+	}
+
+	void OnCollisionEnter(Collision other) {	
+		if (other.collider.CompareTag ("Handle")) {
+			onHandle = true;
+			collidedHandle = other.collider;
+		}
+	}
+
+	void OnCollisionExit(Collision other) {	
+		if (other.collider.CompareTag ("Handle")) {
+			onHandle = false;
+			collidedHandle = null;
 		}
 	}
 
 	void OnTriggerExit(Collider other) {
 		if (other.CompareTag ("Goal")) {
 			isAtGoal = false;
-		} else if (other.CompareTag ("Handle")) {
-			onHandle = false;
 		}
 	}
 
