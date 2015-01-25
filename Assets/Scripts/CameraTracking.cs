@@ -66,7 +66,7 @@ public class CameraTracking : MonoBehaviour {
 			//print ("too close!");
 		}
 
-		print ("newZ = " + newZ);
+		//print ("newZ = " + newZ);
 		newZ = Mathf.Lerp(cam.transform.position.z, -1f * newZ, .1f);
 		cam.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, newZ);
 
