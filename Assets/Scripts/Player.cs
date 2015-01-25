@@ -32,8 +32,8 @@ public class Player : MonoBehaviour {
 
 	public bool isAtGoal = false;
 
-	private float spawnPointTime;
-	private Vector3 spawnPoint;
+	public float spawnPointTime;
+	public Vector3 spawnPoint;
 	// Update is called once per frame
 	void FixedUpdate () {
 		if (Time.timeScale > 0) {
@@ -74,9 +74,6 @@ public class Player : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
 		if (other.CompareTag ("Death")) {
 			Respawn ();		
-		} else if (other.CompareTag ("CheckPoint")) {
-			spawnPoint = other.transform.position;
-			spawnPointTime = Time.time;
 		} else if (other.CompareTag ("Goal")) {
 			isAtGoal = true;
 			if (partner.isAtGoal) {
@@ -93,8 +90,7 @@ public class Player : MonoBehaviour {
 	void OnTriggerExit(Collider other) {
 		if (other.CompareTag ("Goal")) {
 			isAtGoal = false;
-		}
-		else if (other.CompareTag ("Handle")) {
+		} else if (other.CompareTag ("Handle")) {
 			onHandle = false;
 			collidedHandle = null;
 		}
