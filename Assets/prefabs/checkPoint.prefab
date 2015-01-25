@@ -25,7 +25,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 491120}
   - 65: {fileID: 6591118}
-  - 114: {fileID: 11491118}
   m_Layer: 0
   m_Name: checkPoint
   m_TagString: CheckPoint
@@ -40,8 +39,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 191118}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .0500001907, y: 0, z: 0}
-  m_LocalScale: {x: .100000001, y: .00500000035, z: .100000001}
+  m_LocalPosition: {x: .0500001907, y: 0, z: .5}
+  m_LocalScale: {x: .0299999993, y: .00500000035, z: .100000001}
   m_Children: []
   m_Father: {fileID: 491120}
   m_RootOrder: 0
@@ -52,8 +51,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 191120}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.8999996, y: 25.6900005, z: 0}
-  m_LocalScale: {x: 1, y: 20, z: 1}
+  m_LocalPosition: {x: 59.2999992, y: 31.2000008, z: 0}
+  m_LocalScale: {x: 3, y: 20, z: 1}
   m_Children:
   - {fileID: 491118}
   m_Father: {fileID: 0}
@@ -70,17 +69,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &11491118
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 191120}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ee70bb3f48e81b4abafd4ba91b395ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &21291118
 SpriteRenderer:
   m_ObjectHideFlags: 1
