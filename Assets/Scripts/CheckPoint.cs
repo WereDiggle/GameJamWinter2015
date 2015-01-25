@@ -6,14 +6,23 @@ public class CheckPoint : MonoBehaviour {
 
 	public List<GameObject> objectsToReset;
 
+	private List<GameObject> backUpObjects;
+
 	private List<Vector3> locations = new List<Vector3>();
 	private List<Quaternion> rotations = new List<Quaternion>();
+	private List<Rigidbody> connections = new List<Rigidbody>();
 
 	// Use this for initialization
 	void Start () {
 		foreach (GameObject resetObject in objectsToReset) {
 			locations.Add(resetObject.transform.position);
 			rotations.Add(resetObject.transform.rotation);
+			FixedJoint j = resetObject.GetComponent<FixedJoint>();
+			if (j != null) {
+				connections.Add (j.connectedBody);
+			} else {
+				connections.Add (null);
+			}
 		}
 	}
 	
@@ -32,6 +41,8 @@ public class CheckPoint : MonoBehaviour {
 			//puts objects back in place
 			int i=0;
 			foreach (GameObject resetObject in objectsToReset) {
+
+
 				resetObject.transform.position = locations[i];
 				resetObject.transform.rotation = rotations[i];
 				resetObject.rigidbody.velocity = Vector3.zero;
